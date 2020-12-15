@@ -17,7 +17,7 @@ mobile device to better understand basic functionality and edge cases.
 
 ## User Stories
 
--   [ ] User can see a display showing the current number entered or the
+-   [x ] User can see a display showing the current number entered or the
 result of the last operation.
 -   [ ] User can see an entry pad containing buttons for the digits 0-9, 
 operations - '+', '-', '/', and '=', a 'C' button (for clear), and an 'AC'
