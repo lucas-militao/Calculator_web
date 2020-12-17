@@ -27,13 +27,30 @@ export default function App() {
     setDisplay('0');
   }
 
-  function handleOperation() {
+  function handleResult() {
     var currentInput = lastNumberInserted
     if (display != '0') currentInput = parseInt(display, 10);
       const result = calculation(lastNumberInserted, currentInput, operation);
       setDisplay(result.toString());
       setResultOfLastOperation(result);
       setFinishCalculation(true);
+  }
+
+  function handleClear() {
+    if (!finishCalculation) {
+      if (operation != ' ') {
+        setOperation(' ');
+        setDisplay(lastNumberInserted.toString());
+      } else {
+        setLastNumberInserted(0);
+        setDisplay('0');
+      }
+    } else {
+      lastNumberInserted(0);
+      setResultOfLastOperation(0);
+      setDisplay('0');
+      setFinishCalculation(false);
+    }
   }
 
   function calculation(num1, num2, op) {
@@ -64,12 +81,12 @@ export default function App() {
             <button onClick={handleInput} value= "1">1</button>
             <button onClick={handleInput} value= "2">2</button>
             <button onClick={handleInput} value= "3">3</button>
-            <button value='=' onClick={handleOperation}>=</button>
+            <button value='=' onClick={handleResult}>=</button>
           </div>
           <div id="line4">
             <button>AC</button>
             <button onClick={handleInput} value= "0">0</button>
-            <button>C</button>
+            <button onClick={handleClear}>C</button>
             <button value='/' onClick={handleOperationButtonClick}>/</button>
           </div>
         </div>
