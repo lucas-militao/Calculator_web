@@ -13,6 +13,9 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
+  "scripts": {
+    "dev": "webpack-dev-server --mode development"
+  },
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"
   }
