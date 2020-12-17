@@ -53,6 +53,13 @@ export default function App() {
     }
   }
 
+  function handleClearAll() {
+    setResultOfLastOperation(0);
+    setDisplay('0');
+    setFinishCalculation(false);
+    setOperation(' ');
+  }
+
   function calculation(num1, num2, op) {
     if (op == '+') return num1 + num2;
     else if (op == '-') return num1 - num2;
@@ -84,7 +91,7 @@ export default function App() {
             <button value='=' onClick={handleResult}>=</button>
           </div>
           <div id="line4">
-            <button>AC</button>
+            <button onClick={handleClearAll}>AC</button>
             <button onClick={handleInput} value= "0">0</button>
             <button onClick={handleClear}>C</button>
             <button value='/' onClick={handleOperationButtonClick}>/</button>
