@@ -4,6 +4,7 @@ export default function App() {
 
   const [ display, setDisplay ] = useState('0');
   const [ lastNumberInserted, setLastNumberInserted ] = useState(0);
+  const [ resultOfLastOperation, setResultOfLastOperation ] = useState(0);
   const [ finishCalculation, setFinishCalculation ] = useState(false);
   const [ operation, setOperation ] = useState(' ');
 
@@ -27,22 +28,18 @@ export default function App() {
   }
 
   function handleOperation() {
-    const currentInput = parseInt(display, 10);
-    if(operation == '+') {
-      const result = lastNumberInserted + currentInput;
+    var currentInput = lastNumberInserted
+    if (display != '0') currentInput = parseInt(display, 10);
+      const result = calculation(lastNumberInserted, currentInput, operation);
       setDisplay(result.toString());
-      setLastNumberInserted(result)
+      setResultOfLastOperation(result);
       setFinishCalculation(true);
-    } else if(operation == '-') {
-      const result = lastNumberInserted - currentInput
-      setDisplay(result);
-      setLastNumberInserted(result);
-      setFinishCalculation(true);
-    } else if(operation == '/') {
-      setDisplay(lastNumberInserted / currentInput);
-      setLastNumberInserted(result);
-      setFinishCalculation(true);
-    }
+  }
+
+  function calculation(num1, num2, op) {
+    if (op == '+') return num1 + num2;
+    else if (op == '-') return num1 - num2;
+    else if (op == '/') return num1 / num2;
   }
 
   return (
