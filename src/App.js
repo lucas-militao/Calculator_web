@@ -69,6 +69,20 @@ export default function App() {
     setOperation(' ');
   }
 
+  function handleNumberSign() {
+    if (display != "0") {
+      if (display[0] == "-") {
+        setDisplay(display.substring(1, display.length));
+      } else {
+        setDisplay("-" + display);
+      }
+    }
+  }
+
+  function handleDecimalDot() {
+
+  }
+
   function calculation(num1, num2, op) {
     if (op == '+') return num1 + num2;
     else if (op == '-') return num1 - num2;
@@ -100,10 +114,14 @@ export default function App() {
             <button value='=' onClick={handleResult}>=</button>
           </div>
           <div id="line4">
-            <button onClick={handleClearAll}>AC</button>
             <button onClick={handleInput} value= "0">0</button>
-            <button onClick={handleClear}>C</button>
+            <button onClick={handleDecimalDot} value=".">.</button>
+            <button onClick={handleNumberSign} value="+/-">+/-</button>
             <button value='/' onClick={handleOperationButtonClick}>/</button>
+          </div>
+          <div id="line5">
+            <button onClick={handleClearAll}>AC</button>
+            <button onClick={handleClear}>C</button>
           </div>
         </div>
       </div>
