@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import './App.css';
+
 export default function App() {
 
   const [ display, setDisplay ] = useState('0');
@@ -100,38 +102,33 @@ export default function App() {
   return (
     <>
       <div id="calculator">
-        <input type="text" value={display} disabled="disabled"/>
+        <input id="display" type="text" value={display} disabled="disabled"/>
 
-        <div id="pad">
-          <div id="line1">
-            <button onClick={handleInput} value="7">7</button>
-            <button onClick={handleInput} value= "8">8</button>
-            <button onClick={handleInput} value= "9">9</button>
-            <button value='+' onClick={handleOperationButtonClick}>+</button>
-          </div>
-          <div id="line2">
-            <button onClick={handleInput} value= "4">4</button>
-            <button onClick={handleInput} value= "5">5</button>
-            <button onClick={handleInput} value= "6">6</button>
-            <button value='-' onClick={handleOperationButtonClick}>-</button>
-          </div>
-          <div id="line3">
-            <button onClick={handleInput} value= "1">1</button>
-            <button onClick={handleInput} value= "2">2</button>
-            <button onClick={handleInput} value= "3">3</button>
-            <button value='=' onClick={handleResult}>=</button>
-          </div>
-          <div id="line4">
-            <button onClick={handleInput} value= "0">0</button>
-            <button onClick={handleDecimalDot} value=".">.</button>
-            <button onClick={handleNumberSign} value="+/-">+/-</button>
-            <button value='/' onClick={handleOperationButtonClick}>/</button>
-          </div>
-          <div id="line5">
-            <button onClick={handleClearAll}>AC</button>
-            <button onClick={handleClear}>C</button>
-          </div>
+        <div className="calculator-keys">
+          <button onClick={handleInput} value="7">7</button>
+          <button onClick={handleInput} value= "8">8</button>
+          <button onClick={handleInput} value= "9">9</button>
+          <button className="operator" value='+' onClick={handleOperationButtonClick}>+</button>
+
+          <button onClick={handleInput} value= "4">4</button>
+          <button onClick={handleInput} value= "5">5</button>
+          <button onClick={handleInput} value= "6">6</button>
+          <button className="operator" value='-' onClick={handleOperationButtonClick}>-</button>
+        
+          <button onClick={handleInput} value= "1">1</button>
+          <button onClick={handleInput} value= "2">2</button>
+          <button onClick={handleInput} value= "3">3</button>
+          <button className="equal-sign" value='=' onClick={handleResult}>=</button>
+        
+          <button onClick={handleInput} value= "0">0</button>
+          <button onClick={handleDecimalDot} value=".">.</button>
+          <button onClick={handleNumberSign} value="+/-">+/-</button>
+          <button className="operator" value='/' onClick={handleOperationButtonClick}>/</button>
+        
+          <button className="clear" onClick={handleClearAll}>AC</button>
+          <button className="clear" onClick={handleClear}>C</button>
         </div>
+         
       </div>
     </>
   )
