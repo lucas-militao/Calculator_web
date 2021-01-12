@@ -28,12 +28,14 @@ export default function App() {
   }
 
   function handleResult() {
-    var currentInput = lastNumberInserted
+    var currentInput = lastNumberInserted;
+
     if (display != '0') currentInput = parseInt(display, 10);
-      const result = calculation(lastNumberInserted, currentInput, operation);
-      setDisplay(result.toString());
-      setResultOfLastOperation(result);
-      setFinishCalculation(true);
+
+    const result = calculation(lastNumberInserted, currentInput, operation);
+    setDisplay(result);
+    setResultOfLastOperation(result);
+    setFinishCalculation(true);
   }
 
   function handleClear() {
@@ -57,6 +59,7 @@ export default function App() {
     setResultOfLastOperation(0);
     setDisplay('0');
     setFinishCalculation(false);
+    setLastNumberInserted(0);
     setOperation(' ');
   }
 
