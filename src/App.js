@@ -22,7 +22,7 @@ export default function App() {
     const op = event.target.value;
     setOperation(op);
     if(lastNumberInserted == 0) {
-      setLastNumberInserted(parseInt(display, 10));
+      setLastNumberInserted(parseFloat(display));
     } 
     setDisplay('0');
   }
@@ -30,7 +30,7 @@ export default function App() {
   function handleResult() {
     var currentInput = lastNumberInserted;
 
-    if (display != '0') currentInput = parseInt(display, 10);
+    if (display != '0') currentInput = parseFloat(display, 10);
 
     const result = calculation(lastNumberInserted, currentInput, operation).toString();
     
@@ -80,7 +80,15 @@ export default function App() {
   }
 
   function handleDecimalDot() {
-
+    if (!display.includes(".")) {
+      if (display == "0") {
+        setDisplay(display + ".");
+      } else {
+        if (display.length < 8) {
+          setDisplay(display + ".");
+        }
+      }
+    } 
   }
 
   function calculation(num1, num2, op) {
