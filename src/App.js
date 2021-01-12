@@ -11,7 +11,7 @@ export default function App() {
   function handleInput(event) {
     const digit = event.target.value;
     
-    if (display == '0' || finishCalculation) {
+    if (display == '0' || finishCalculation || display == "ERR") {
       setDisplay(digit)
     } else if (display.length < 8) {
       setDisplay(display + digit);
@@ -32,10 +32,16 @@ export default function App() {
 
     if (display != '0') currentInput = parseInt(display, 10);
 
-    const result = calculation(lastNumberInserted, currentInput, operation);
-    setDisplay(result);
-    setResultOfLastOperation(result);
-    setFinishCalculation(true);
+    const result = calculation(lastNumberInserted, currentInput, operation).toString();
+    
+    if (result.length > 8) {
+      handleClearAll();
+      setDisplay("ERR");
+    } else {
+      setDisplay(result);
+      setResultOfLastOperation(result);
+      setFinishCalculation(true);
+    }
   }
 
   function handleClear() {
